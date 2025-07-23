@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bydq78pjnv618"]
+
+[ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/(you).gd" id="1_qxymc"]
+[ext_resource type="Script" uid="uid://c2vtnjjanr4r2" path="res://scripts/PlayerStateManager/PlayerStateManager.gd" id="3_muwfu"]
+[ext_resource type="Script" uid="uid://8evtng286lul" path="res://scripts/PlayerStateManager/States/move.gd" id="4_6ctt7"]
+[ext_resource type="Script" uid="uid://bfk345attw73x" path="res://scripts/PlayerStateManager/States/dash.gd" id="5_qclmj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8l6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq0n4"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oirr"]
+size = Vector2(32, 32)
+
+[node name="(You)" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_qxymc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_s8l6c")
+scale = Vector2(0.15, 0.15)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fq0n4")
+
+[node name="PlayerStateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state", "current_state", "controller")]
+script = ExtResource("3_muwfu")
+initial_state = NodePath("move")
+current_state = NodePath("move")
+controller = NodePath("..")
+
+[node name="move" type="Node" parent="PlayerStateManager"]
+script = ExtResource("4_6ctt7")
+
+[node name="dash" type="Node" parent="PlayerStateManager"]
+script = ExtResource("5_qclmj")
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("RectangleShape2D_1oirr")
+debug_color = Color(0.998524, 0, 0.139748, 0.42)
