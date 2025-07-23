@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5xotrc14e4s4"]
+[gd_scene load_steps=7 format=3 uid="uid://5xotrc14e4s4"]
 
 [ext_resource type="PackedScene" uid="uid://bydq78pjnv618" path="res://prefabs/Duck.tscn" id="1_h1spn"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_owmpp"]
@@ -10,6 +10,8 @@ script = ExtResource("3_owmpp")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="Environment" id="Environment_owmpp"]
 
 [node name="Action" type="Node2D"]
 
@@ -38,3 +40,4 @@ script = ExtResource("4_b345g")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_owmpp")

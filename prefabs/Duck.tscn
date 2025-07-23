@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bydq78pjnv618"]
 
-[ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/(you).gd" id="1_qxymc"]
+[ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/duck.gd" id="1_qxymc"]
 [ext_resource type="Script" uid="uid://c2vtnjjanr4r2" path="res://scripts/PlayerStateManager/PlayerStateManager.gd" id="3_muwfu"]
 [ext_resource type="Script" uid="uid://8evtng286lul" path="res://scripts/PlayerStateManager/States/move.gd" id="4_6ctt7"]
 [ext_resource type="Script" uid="uid://bfk345attw73x" path="res://scripts/PlayerStateManager/States/dash.gd" id="5_qclmj"]
