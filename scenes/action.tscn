@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://5xotrc14e4s4"]
+[gd_scene load_steps=8 format=3 uid="uid://5xotrc14e4s4"]
 
 [ext_resource type="PackedScene" uid="uid://bydq78pjnv618" path="res://prefabs/Duck.tscn" id="1_h1spn"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_owmpp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_owmpp"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_b345g"]
+[ext_resource type="Texture2D" uid="uid://b14i5crd1llg2" path="res://icon.svg" id="5_b345g"]
 
 [sub_resource type="Resource" id="Resource_b345g"]
 script = ExtResource("3_owmpp")
@@ -24,6 +25,7 @@ top_level = true
 script = ExtResource("2_owmpp")
 follow_mode = 2
 follow_target = NodePath("../player")
+zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_b345g")
 follow_damping = true
 draw_limits = true
@@ -31,6 +33,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="player/Camera2D"]
@@ -41,3 +44,19 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_owmpp")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-92, 149)
+texture = ExtResource("5_b345g")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(38, 149)
+texture = ExtResource("5_b345g")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(168, 149)
+texture = ExtResource("5_b345g")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(298, 149)
+texture = ExtResource("5_b345g")

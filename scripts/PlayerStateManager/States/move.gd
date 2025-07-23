@@ -2,7 +2,7 @@ extends PlayerState
 class_name PlayerMove
 
 func Enter():
-	pass
+	$"../../AnimatedSprite2D".play("walk")
 
 func Physics_Process(delta: float):
 	var direction := Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")).normalized()
@@ -11,6 +11,9 @@ func Physics_Process(delta: float):
 		Transitioned.emit(self, "dash")
 	
 	controller.move(delta, direction)
+	
+	if direction.x == 0 and direction.y == 0:
+		Transitioned.emit(self, "idle")
 
 func Exit():
-	pass
+	$"../../AnimatedSprite2D".play("idle")

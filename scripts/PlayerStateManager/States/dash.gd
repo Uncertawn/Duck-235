@@ -1,7 +1,7 @@
 extends PlayerState
 class_name PlayerDash
 
-const dash_factor := 100000
+const dash_factor := 50000
 const SLOWDOWN_SPEED := dash_factor/10
 
 var should_slow_down := false
@@ -21,7 +21,7 @@ func Physics_Process(delta: float):
 		controller.velocity.x = move_toward(controller.velocity.x, 0, SLOWDOWN_SPEED*delta)
 		controller.velocity.y = move_toward(controller.velocity.y, 0, SLOWDOWN_SPEED*delta)
 	
-	if controller.velocity.length() < 15:
+	if controller.velocity.length() < 20:
 		Transitioned.emit(self, "move")
 
 func Exit():
