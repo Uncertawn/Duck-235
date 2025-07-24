@@ -17,3 +17,6 @@ func interact():
 
 func get_interact_message():
 	return interact_message
+
+func is_item():
+	return interact_holder.has_method("is_item")

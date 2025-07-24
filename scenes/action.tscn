@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://5xotrc14e4s4"]
+[gd_scene load_steps=26 format=4 uid="uid://5xotrc14e4s4"]
 
 [ext_resource type="PackedScene" uid="uid://bydq78pjnv618" path="res://prefabs/Duck.tscn" id="1_h1spn"]
 [ext_resource type="Script" uid="uid://bruk2j363ff5a" path="res://scripts/quasi_transporter.gd" id="2_70fdy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://lurtbcr8qmu1" path="res://anim/scene/tileset.png" id="6_l5ron"]
 [ext_resource type="Texture2D" uid="uid://b1r4pdtkhm5xx" path="res://anim/ui/inventory_slot.png" id="6_ppouw"]
 [ext_resource type="Texture2D" uid="uid://c2gt76d8k8eh4" path="res://anim/missile silo/missile silo.png" id="6_ycbvs"]
+[ext_resource type="PackedScene" uid="uid://42vahewygw45" path="res://prefabs/items/metal_sheet.tscn" id="7_euqem"]
 [ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="8_1snw0"]
 [ext_resource type="Script" uid="uid://yjhp11topkgk" path="res://scripts/Player/item/inventory.gd" id="11_f8p3t"]
 [ext_resource type="PackedScene" uid="uid://t56q3kmigrnk" path="res://prefabs/items/u_235.tscn" id="12_5nlgq"]
@@ -138,7 +139,7 @@ sources/0 = SubResource("TileSetAtlasSource_ycbvs")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_70fdy"]
 shader = ExtResource("6_1snw0")
-shader_parameter/color = Color(0.271398, 0.410995, 0.528732, 1)
+shader_parameter/color = Color(0.660878, 0.189534, 0.380605, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
@@ -291,8 +292,9 @@ shape = SubResource("RectangleShape2D_ycbvs")
 
 [node name="player" type="Node" parent="."]
 
-[node name="player" parent="player" instance=ExtResource("1_h1spn")]
+[node name="player" parent="player" node_paths=PackedStringArray("inventory") instance=ExtResource("1_h1spn")]
 position = Vector2(-31, 18)
+inventory = NodePath("../Camera2D/inventory")
 
 [node name="PhantomCamera2D" type="Node2D" parent="player" node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -330,4 +332,8 @@ item_display = NodePath("item_display")
 
 [node name="U-235" parent="items" node_paths=PackedStringArray("inventory") instance=ExtResource("12_5nlgq")]
 position = Vector2(-142, -200)
+inventory = NodePath("../../player/Camera2D/inventory")
+
+[node name="metal sheet" parent="items" node_paths=PackedStringArray("inventory") instance=ExtResource("7_euqem")]
+position = Vector2(-73, -200)
 inventory = NodePath("../../player/Camera2D/inventory")

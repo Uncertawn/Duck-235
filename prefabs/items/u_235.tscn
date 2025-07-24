@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://t56q3kmigrnk"]
+[gd_scene load_steps=8 format=3 uid="uid://t56q3kmigrnk"]
 
 [ext_resource type="Script" uid="uid://uwthuspyhd31" path="res://scripts/Player/item/Item.gd" id="1_iuvkx"]
-[ext_resource type="Texture2D" uid="uid://dffkwh0ewtnl8" path="res://anim/ui/button.png" id="2_xc0ar"]
+[ext_resource type="LabelSettings" uid="uid://1nvufcnvx017" path="res://fonts/applied_font.tres" id="2_y38q5"]
 [ext_resource type="Shader" uid="uid://dif1rkylwta0" path="res://shaders/outline.gdshader" id="2_yknux"]
 [ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="3_xc0ar"]
+[ext_resource type="Texture2D" uid="uid://cxs6yw63drjch" path="res://anim/collectibles/(thick red) u235.png" id="3_yknux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y38q5"]
 shader = ExtResource("2_yknux")
@@ -17,14 +18,22 @@ shader_parameter/onoff = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuvkx"]
 size = Vector2(64, 64)
 
-[node name="U-235 rod" type="Node2D" node_paths=PackedStringArray("display")]
+[node name="(think red) u235 rod" type="Node2D" node_paths=PackedStringArray("display")]
 script = ExtResource("1_iuvkx")
 display = NodePath("display")
-item_name = "u-235 rod"
+item_name = "(thick red) u235 rod"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -23.0
+offset_right = 136.0
+scale = Vector2(0.46183, 0.46183)
+text = "(thick red) u235 rod"
+label_settings = ExtResource("2_y38q5")
 
 [node name="display" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_y38q5")
-texture = ExtResource("2_xc0ar")
+texture = ExtResource("3_yknux")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("sprite", "interact_holder")]
 script = ExtResource("3_xc0ar")
@@ -33,4 +42,5 @@ interact_holder = NodePath("..")
 interact_message = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.520573, 0.520573)
 shape = SubResource("RectangleShape2D_iuvkx")

@@ -5,6 +5,8 @@ const SLOWDOWN_SPEED := SPEED*4
 
 var facing = 1
 
+@export var inventory:Inventory
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -16,7 +18,13 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("interact"):
 		if len(interactables) > 0:
-			interactables[-1].interact()
+			if interactables[-1].is_item():
+				if not inventory.is_full():
+					interactables[-1].interact()
+				elif inventory.is_full():
+					$interaction_box/interact_button/text.text = "Inventory full"
+			else:
+				interactables[-1].interact()
 	if Input.is_action_pressed("interact"):
 		$interaction_box/interact_button.frame = 1
 	else:

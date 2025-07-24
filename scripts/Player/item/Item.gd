@@ -6,8 +6,9 @@ class_name Item
 @export var item_name:String
 
 func interact():
-	inventory.set_item(self)
-	queue_free()
+	if not inventory.is_full():
+		inventory.set_item(self)
+		queue_free()
 
 func is_item():
 	return true
