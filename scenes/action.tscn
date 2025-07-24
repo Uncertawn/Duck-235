@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://5xotrc14e4s4"]
+[gd_scene load_steps=17 format=4 uid="uid://5xotrc14e4s4"]
 
 [ext_resource type="PackedScene" uid="uid://bydq78pjnv618" path="res://prefabs/Duck.tscn" id="1_h1spn"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_owmpp"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_owmpp"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_b345g"]
 [ext_resource type="Shader" uid="uid://dif1rkylwta0" path="res://shaders/outline.gdshader" id="6_1snw0"]
+[ext_resource type="Script" uid="uid://cq1h65baoyo5l" path="res://scripts/missile_silo.gd" id="6_5twxs"]
 [ext_resource type="Texture2D" uid="uid://lurtbcr8qmu1" path="res://anim/scene/tileset.png" id="6_l5ron"]
 [ext_resource type="Texture2D" uid="uid://c2gt76d8k8eh4" path="res://anim/missile silo/missile silo.png" id="6_ycbvs"]
 [ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="8_1snw0"]
@@ -57,10 +58,19 @@ shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
-shader_parameter/onoff = 1
+shader_parameter/onoff = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycbvs"]
 size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1snw0"]
+shader = ExtResource("6_1snw0")
+shader_parameter/color = Color(0.160784, 0.258824, 0.341176, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/onoff = 0
 
 [node name="Action" type="Node2D"]
 
@@ -99,18 +109,42 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_owmpp")
 
-[node name="missile silo" type="Node2D" parent="."]
+[node name="missile silo" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
 position = Vector2(-2, -82)
+script = ExtResource("6_5twxs")
+sprite = NodePath("silo2")
 
-[node name="Sprite2D" type="Sprite2D" parent="missile silo"]
+[node name="silo2" type="Sprite2D" parent="missile silo"]
 material = SubResource("ShaderMaterial_5twxs")
 position = Vector2(-12, 0)
 texture = ExtResource("6_ycbvs")
 hframes = 2
 frame = 1
 
-[node name="silo" type="StaticBody2D" parent="missile silo"]
+[node name="Area2D" type="Area2D" parent="missile silo" node_paths=PackedStringArray("sprite", "interact_holder")]
 script = ExtResource("8_1snw0")
+sprite = NodePath("../silo2")
+interact_holder = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="missile silo/silo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="missile silo/Area2D"]
+shape = SubResource("RectangleShape2D_ycbvs")
+
+[node name="missile silo2" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
+position = Vector2(94, -82)
+script = ExtResource("6_5twxs")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="missile silo2"]
+material = SubResource("ShaderMaterial_1snw0")
+position = Vector2(-12, 0)
+texture = ExtResource("6_ycbvs")
+hframes = 2
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="missile silo2" node_paths=PackedStringArray("sprite", "interact_holder")]
+script = ExtResource("8_1snw0")
+sprite = NodePath("../Sprite2D")
+interact_holder = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="missile silo2/Area2D"]
 shape = SubResource("RectangleShape2D_ycbvs")

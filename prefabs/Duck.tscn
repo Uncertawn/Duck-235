@@ -144,7 +144,7 @@ script = ExtResource("1_qxymc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8i15a")
 animation = &"idle"
-frame_progress = 0.465472
+frame_progress = 0.357405
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)
@@ -181,6 +181,7 @@ debug_color = Color(0.998524, 0, 0.139748, 0.42)
 shape = SubResource("RectangleShape2D_0r2yy")
 
 [node name="interact_button" type="Sprite2D" parent="interaction_box"]
+visible = false
 position = Vector2(-30, -25)
 texture = ExtResource("8_o4h3m")
 hframes = 2
@@ -201,5 +202,7 @@ offset_bottom = 12.0
 text = "to interact"
 label_settings = SubResource("LabelSettings_0wpqc")
 
+[connection signal="area_entered" from="interaction_box" to="." method="_on_interaction_box_area_entered"]
+[connection signal="area_exited" from="interaction_box" to="." method="_on_interaction_box_area_exited"]
 [connection signal="body_entered" from="interaction_box" to="." method="_on_interaction_box_body_entered"]
 [connection signal="body_exited" from="interaction_box" to="." method="_on_interaction_box_body_exited"]

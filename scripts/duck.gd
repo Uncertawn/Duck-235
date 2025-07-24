@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 		
 	if Input.is_action_just_pressed("interact"):
-		interactables[-1].interact()
+		if len(interactables) > 0:
+			interactables[-1].interact()
 	if Input.is_action_pressed("interact"):
 		$interaction_box/interact_button.frame = 1
 	else:
@@ -58,15 +59,30 @@ func apply_friction(delta, axis:int=0):
 var interactables = []
 
 func _on_interaction_box_body_entered(body: Node2D) -> void:
-	if body.has_method("interact"):
-		$interaction_box/interact_button.visible = true
-		interactables.append(body)
-
+	pass
 
 func _on_interaction_box_body_exited(body: Node2D) -> void:
-	if body.has_method("interact"):
-		if interactables.has(body):
-			interactables.remove_at(interactables.find(body))
+	pass
+
+func _on_interaction_box_area_entered(area: Area2D) -> void:
+	if area.has_method("interact"):
+		for interactable in interactables:
+			if interactable.has_method("highlight"):
+				interactable.highlight(0)
+		$interaction_box/interact_button.visible = true
+		interactables.append(area)
+		if area.has_method("highlight"):
+			area.highlight(1)
+
+
+func _on_interaction_box_area_exited(area: Area2D) -> void:
+	if area.has_method("interact"):
+		if interactables.has(area):
+			if area.has_method("highlight"):
+				area.highlight(0)
+			interactables.remove_at(interactables.find(area))
 			if len(interactables) == 0:
 				$interaction_box/interact_button.visible = false
-			
+			if len(interactables) > 0:
+				if interactables[-1].has_method("highlight"):
+					interactables[-1].highlight(-1)
