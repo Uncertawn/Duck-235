@@ -14,5 +14,5 @@ func interact():
 	is_open = not is_open
 	if is_open: open()
 	elif not is_open: close()
-	print(str(is_open) + " " + str(sprite.frame))
+	#print(str(is_open) + " " + str(sprite.frame))
 	

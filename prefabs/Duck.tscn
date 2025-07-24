@@ -1,12 +1,12 @@
 [gd_scene load_steps=30 format=3 uid="uid://bydq78pjnv618"]
 
-[ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/duck.gd" id="1_qxymc"]
+[ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/Player/duck.gd" id="1_qxymc"]
 [ext_resource type="Texture2D" uid="uid://d16jsfjkud1sd" path="res://anim/ducky/ducky_idle.png" id="2_5dvqk"]
 [ext_resource type="Texture2D" uid="uid://cth0e8g8yypsl" path="res://anim/ducky/ducky_walk.png" id="3_jaq88"]
-[ext_resource type="Script" uid="uid://c2vtnjjanr4r2" path="res://scripts/PlayerStateManager/PlayerStateManager.gd" id="3_muwfu"]
-[ext_resource type="Script" uid="uid://8evtng286lul" path="res://scripts/PlayerStateManager/States/move.gd" id="4_6ctt7"]
-[ext_resource type="Script" uid="uid://bfk345attw73x" path="res://scripts/PlayerStateManager/States/dash.gd" id="5_qclmj"]
-[ext_resource type="Script" uid="uid://dti0lwwg72n58" path="res://scripts/PlayerStateManager/States/idle.gd" id="7_0r2yy"]
+[ext_resource type="Script" uid="uid://c2vtnjjanr4r2" path="res://scripts/Player/PlayerStateManager/PlayerStateManager.gd" id="3_muwfu"]
+[ext_resource type="Script" uid="uid://8evtng286lul" path="res://scripts/Player/PlayerStateManager/States/move.gd" id="4_6ctt7"]
+[ext_resource type="Script" uid="uid://bfk345attw73x" path="res://scripts/Player/PlayerStateManager/States/dash.gd" id="5_qclmj"]
+[ext_resource type="Script" uid="uid://dti0lwwg72n58" path="res://scripts/Player/PlayerStateManager/States/idle.gd" id="7_0r2yy"]
 [ext_resource type="FontFile" uid="uid://c4l8aqq0vcdkb" path="res://fonts/Born2bSportyFS.otf" id="8_cdrp4"]
 [ext_resource type="Texture2D" uid="uid://dffkwh0ewtnl8" path="res://anim/ui/button.png" id="8_o4h3m"]
 
@@ -144,7 +144,7 @@ script = ExtResource("1_qxymc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8i15a")
 animation = &"idle"
-frame_progress = 0.357405
+frame_progress = 0.658045
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)
