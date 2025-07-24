@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjrle75da6xd0"]
+
+[ext_resource type="Script" uid="uid://uwthuspyhd31" path="res://scripts/Player/item/Item.gd" id="1_gth36"]
+[ext_resource type="LabelSettings" uid="uid://1nvufcnvx017" path="res://fonts/applied_font.tres" id="2_1f462"]
+[ext_resource type="Shader" uid="uid://dif1rkylwta0" path="res://shaders/outline.gdshader" id="3_cg0tx"]
+[ext_resource type="Texture2D" uid="uid://cx1nm4b2gf6j5" path="res://anim/collectibles/thruster.png" id="4_gth36"]
+[ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="5_w3yge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y38q5"]
+shader = ExtResource("3_cg0tx")
+shader_parameter/color = Color(0.160784, 0.258824, 0.341176, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/onoff = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuvkx"]
+size = Vector2(64, 64)
+
+[node name="thruster" type="Node2D" node_paths=PackedStringArray("display")]
+script = ExtResource("1_gth36")
+display = NodePath("display")
+item_name = "Totally a thruster"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 134.0
+offset_bottom = 3.0
+scale = Vector2(0.46183, 0.46183)
+text = "Totally a thruster"
+label_settings = ExtResource("2_1f462")
+
+[node name="display" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y38q5")
+texture = ExtResource("4_gth36")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("sprite", "interact_holder")]
+script = ExtResource("5_w3yge")
+sprite = NodePath("../display")
+interact_holder = NodePath("..")
+interact_message = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.520573, 0.520573)
+shape = SubResource("RectangleShape2D_iuvkx")

@@ -24,9 +24,10 @@ display = NodePath("display")
 item_name = "(thick red) u235 rod"
 
 [node name="Label" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -23.0
-offset_right = 136.0
+offset_left = -27.0
+offset_top = -24.0
+offset_right = 131.0
+offset_bottom = -1.0
 scale = Vector2(0.46183, 0.46183)
 text = "(thick red) u235 rod"
 label_settings = ExtResource("2_y38q5")
