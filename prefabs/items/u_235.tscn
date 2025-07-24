@@ -17,10 +17,10 @@ shader_parameter/onoff = 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuvkx"]
 size = Vector2(64, 64)
 
-[node name="U-235" type="Node2D" node_paths=PackedStringArray("display")]
+[node name="U-235 rod" type="Node2D" node_paths=PackedStringArray("display")]
 script = ExtResource("1_iuvkx")
 display = NodePath("display")
-item_name = "u-235"
+item_name = "u-235 rod"
 
 [node name="display" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_y38q5")

@@ -122,13 +122,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq0n4"]
-size = Vector2(16, 14)
+size = Vector2(24, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oirr"]
 size = Vector2(14, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r2yy"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4h3m"]
 font = ExtResource("8_cdrp4")
@@ -147,7 +147,7 @@ animation = &"idle"
 frame_progress = 0.658045
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 3)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_fq0n4")
 
 [node name="PlayerStateManager" type="Node" parent="." node_paths=PackedStringArray("initial_state", "current_state", "controller")]
@@ -182,7 +182,8 @@ shape = SubResource("RectangleShape2D_0r2yy")
 
 [node name="interact_button" type="Sprite2D" parent="interaction_box"]
 visible = false
-position = Vector2(-30, -25)
+position = Vector2(-15, -14)
+scale = Vector2(0.419507, 0.419507)
 texture = ExtResource("8_o4h3m")
 hframes = 2
 
