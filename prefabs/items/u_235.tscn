@@ -30,7 +30,7 @@ texture = ExtResource("2_xc0ar")
 script = ExtResource("3_xc0ar")
 sprite = NodePath("../display")
 interact_holder = NodePath("..")
-item = true
+interact_message = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_iuvkx")
