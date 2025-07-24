@@ -13,6 +13,13 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	elif facing == -1:
 		$AnimatedSprite2D.flip_h = false
+		
+	if Input.is_action_just_pressed("interact"):
+		interactables[-1].interact()
+	if Input.is_action_pressed("interact"):
+		$interaction_box/interact_button.frame = 1
+	else:
+		$interaction_box/interact_button.frame = 0
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_cancel"):
@@ -47,3 +54,19 @@ func apply_friction(delta, axis:int=0):
 	elif axis == 1:
 		velocity.y = move_toward(velocity.y, 0, SLOWDOWN_SPEED * delta)
 		
+
+var interactables = []
+
+func _on_interaction_box_body_entered(body: Node2D) -> void:
+	if body.has_method("interact"):
+		$interaction_box/interact_button.visible = true
+		interactables.append(body)
+
+
+func _on_interaction_box_body_exited(body: Node2D) -> void:
+	if body.has_method("interact"):
+		if interactables.has(body):
+			interactables.remove_at(interactables.find(body))
+			if len(interactables) == 0:
+				$interaction_box/interact_button.visible = false
+			

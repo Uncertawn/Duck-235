@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bydq78pjnv618"]
+[gd_scene load_steps=30 format=3 uid="uid://bydq78pjnv618"]
 
 [ext_resource type="Script" uid="uid://du7r07320gqp5" path="res://scripts/duck.gd" id="1_qxymc"]
 [ext_resource type="Texture2D" uid="uid://d16jsfjkud1sd" path="res://anim/ducky/ducky_idle.png" id="2_5dvqk"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://8evtng286lul" path="res://scripts/PlayerStateManager/States/move.gd" id="4_6ctt7"]
 [ext_resource type="Script" uid="uid://bfk345attw73x" path="res://scripts/PlayerStateManager/States/dash.gd" id="5_qclmj"]
 [ext_resource type="Script" uid="uid://dti0lwwg72n58" path="res://scripts/PlayerStateManager/States/idle.gd" id="7_0r2yy"]
+[ext_resource type="FontFile" uid="uid://c4l8aqq0vcdkb" path="res://fonts/Born2bSportyFS.otf" id="8_cdrp4"]
+[ext_resource type="Texture2D" uid="uid://dffkwh0ewtnl8" path="res://anim/ui/button.png" id="8_o4h3m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dvqk"]
 atlas = ExtResource("2_5dvqk")
@@ -125,14 +127,24 @@ size = Vector2(16, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oirr"]
 size = Vector2(14, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r2yy"]
+size = Vector2(64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4h3m"]
+font = ExtResource("8_cdrp4")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0wpqc"]
+font = ExtResource("8_cdrp4")
+
 [node name="Duck" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_qxymc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8i15a")
-animation = &"walk"
-frame_progress = 0.0360978
+animation = &"idle"
+frame_progress = 0.465472
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)
@@ -162,3 +174,32 @@ collision_mask = 2
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1oirr")
 debug_color = Color(0.998524, 0, 0.139748, 0.42)
+
+[node name="interaction_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_box"]
+shape = SubResource("RectangleShape2D_0r2yy")
+
+[node name="interact_button" type="Sprite2D" parent="interaction_box"]
+position = Vector2(-30, -25)
+texture = ExtResource("8_o4h3m")
+hframes = 2
+
+[node name="Label" type="Label" parent="interaction_box/interact_button"]
+offset_left = -3.0
+offset_top = -12.0
+offset_right = 4.0
+offset_bottom = 6.0
+text = "E"
+label_settings = SubResource("LabelSettings_o4h3m")
+
+[node name="Label2" type="Label" parent="interaction_box/interact_button"]
+offset_left = 11.0
+offset_top = -11.0
+offset_right = 73.0
+offset_bottom = 12.0
+text = "to interact"
+label_settings = SubResource("LabelSettings_0wpqc")
+
+[connection signal="body_entered" from="interaction_box" to="." method="_on_interaction_box_body_entered"]
+[connection signal="body_exited" from="interaction_box" to="." method="_on_interaction_box_body_exited"]
