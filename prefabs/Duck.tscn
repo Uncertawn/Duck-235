@@ -186,7 +186,7 @@ position = Vector2(-30, -25)
 texture = ExtResource("8_o4h3m")
 hframes = 2
 
-[node name="Label" type="Label" parent="interaction_box/interact_button"]
+[node name="button" type="Label" parent="interaction_box/interact_button"]
 offset_left = -3.0
 offset_top = -12.0
 offset_right = 4.0
@@ -194,7 +194,7 @@ offset_bottom = 6.0
 text = "E"
 label_settings = SubResource("LabelSettings_o4h3m")
 
-[node name="Label2" type="Label" parent="interaction_box/interact_button"]
+[node name="text" type="Label" parent="interaction_box/interact_button"]
 offset_left = 11.0
 offset_top = -11.0
 offset_right = 73.0

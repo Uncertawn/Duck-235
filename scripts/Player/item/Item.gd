@@ -8,3 +8,6 @@ class_name Item
 func interact():
 	inventory.set_item(self)
 	queue_free()
+
+func is_item():
+	return true

@@ -73,7 +73,14 @@ func _on_interaction_box_area_entered(area: Area2D) -> void:
 		interactables.append(area)
 		if area.has_method("highlight"):
 			area.highlight(1)
-
+		
+		if area.has_method("is_item"):
+			if area.is_item():
+				$interaction_box/interact_button/text.text = "pick up"
+			else:
+				$interaction_box/interact_button/text.text = "interact"
+		else:
+				$interaction_box/interact_button/text.text = "interact"
 
 func _on_interaction_box_area_exited(area: Area2D) -> void:
 	if area.has_method("interact"):
