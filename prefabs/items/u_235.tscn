@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://t56q3kmigrnk"]
 
-[ext_resource type="Script" uid="uid://uwthuspyhd31" path="res://scripts/Player/item/Item.gd" id="1_iuvkx"]
+[ext_resource type="Script" path="res://scripts/Player/item/Item.gd" id="1_iuvkx"]
 [ext_resource type="LabelSettings" uid="uid://1nvufcnvx017" path="res://fonts/applied_font.tres" id="2_y38q5"]
-[ext_resource type="Shader" uid="uid://dif1rkylwta0" path="res://shaders/outline.gdshader" id="2_yknux"]
-[ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="3_xc0ar"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_yknux"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_xc0ar"]
 [ext_resource type="Texture2D" uid="uid://cxs6yw63drjch" path="res://anim/collectibles/(thick red) u235.png" id="3_yknux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y38q5"]

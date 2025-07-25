@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bqegp77gug8ju"]
 
-[ext_resource type="Script" uid="uid://uwthuspyhd31" path="res://scripts/Player/item/Item.gd" id="1_1tnp3"]
+[ext_resource type="Script" path="res://scripts/Player/item/Item.gd" id="1_1tnp3"]
 [ext_resource type="LabelSettings" uid="uid://1nvufcnvx017" path="res://fonts/applied_font.tres" id="2_x1mdd"]
-[ext_resource type="Shader" uid="uid://dif1rkylwta0" path="res://shaders/outline.gdshader" id="3_avmwh"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_avmwh"]
 [ext_resource type="Texture2D" uid="uid://bt0306qb1h6ub" path="res://anim/collectibles/fuel.png" id="4_xcx2k"]
-[ext_resource type="Script" uid="uid://ddes48mvqh1dk" path="res://scripts/interactable.gd" id="5_copfd"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_copfd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y38q5"]
 shader = ExtResource("3_avmwh")

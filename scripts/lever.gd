@@ -3,6 +3,7 @@ class_name Lever
 
 @export var on := false
 @export var display:Sprite2D
+@export var audio:AudioStreamPlayer2D
 
 @export var puzzle_master:LeverPuzzleMaster
 
@@ -16,3 +17,5 @@ func update():
 func interact():
 	on = not on
 	update()
+	audio.play()
+	

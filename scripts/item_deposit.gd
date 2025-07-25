@@ -1,4 +1,5 @@
 extends Node2D
+class_name ItemDeposit
 
 @export var u235 := false
 @export var metal_sheet := false
@@ -6,6 +7,8 @@ extends Node2D
 @export var fuel := false
 
 @export var inv:Inventory
+
+@export var audio:AudioStreamPlayer2D
 
 func _ready() -> void:
 	update()
@@ -23,6 +26,7 @@ func interact():
 		inv.item.pop_at(0)
 		inv.item_display.texture = null
 	update()
+	audio.play()
 	
 func update():
 	if u235:
@@ -33,3 +37,6 @@ func update():
 		$thruster.frame = 2 + 4
 	if fuel:
 		$fuel.frame = 3 + 4
+		
+func is_full():
+	return u235 and metal_sheet and thruster and fuel
