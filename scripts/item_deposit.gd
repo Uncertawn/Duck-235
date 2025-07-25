@@ -7,6 +7,9 @@ extends Node2D
 
 @export var inv:Inventory
 
+func _ready() -> void:
+	update()
+
 func interact():
 	if len(inv.item) > 0:
 		if "u235" in inv.item[0].to_lower():

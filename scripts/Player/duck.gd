@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED := 500.0/2.0
+const SPEED := 500.0/4.0
 const SLOWDOWN_SPEED := SPEED*4
 
 var facing = 1
