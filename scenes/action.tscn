@@ -1102,3 +1102,4 @@ label_settings = ExtResource("2_665qy")
 
 [connection signal="timeout" from="missile silo/flash_after" to="missile silo" method="_on_timer_timeout"]
 [connection signal="timeout" from="missile silo/to_main_after" to="missile silo" method="_on_to_main_after_timeout"]
+[connection signal="timeout" from="player/Camera2D/timer/Timer" to="player/Camera2D/timer" method="_on_timer_timeout"]
